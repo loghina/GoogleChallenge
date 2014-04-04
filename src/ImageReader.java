@@ -29,40 +29,40 @@ public class ImageReader {
 			}
 			
 			String parts[] = size.split(" ");
-			int height = Integer.parseInt(parts[0]);
-			int width = Integer.parseInt(parts[1]);
-			boolean[][] image = new boolean[width][height];
+			int rows = Integer.parseInt(parts[0]);
+			int columns = Integer.parseInt(parts[1]);
+			boolean[][] image = new boolean[rows][columns];
 			
-			for(int y=0; y<height; y++) {
+			for(int row=0; row<rows; row++) {
 				String line = reader.readLine();
 				if(line == null) {
-					System.out.println("not enough rows, y=" + y);
+					System.out.println("not enough rows, y=" + row);
 					reader.close();
 					return result;
 				}
-				if(line.length() < width) {
-					System.out.println("not enough characters at row y=" + y + ", at line " + (y+1));
+				if(line.length() < columns) {
+					System.out.println("not enough characters at row y=" + row + ", at line " + (row+1));
 					reader.close();
 					return result;
 				}
-				for(int x=0; x<width; x++) {
+				for(int column=0; column<columns; column++) {
 
-					char c = line.charAt(x);
+					char c = line.charAt(column);
 					if(c == '#') {
-						image[x][y] = true;
+						image[row][column] = true;
 					}
 					else if(c == '.') {
-						image[x][y] = false;
+						image[row][column] = false;
 					}
 					else {
-						System.out.println("character " + c + " at row y=" + y + ", at line " + (y+1) + ", column x=" + x + " invalid");
+						System.out.println("character " + c + " at row y=" + row + ", at line " + (row+1) + ", column x=" + column + " invalid");
 						reader.close();
 						return result;
 					}
 				}
 			}
 			
-			result = new Image(width, height, image);
+			result = new Image(columns, rows, image);
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();

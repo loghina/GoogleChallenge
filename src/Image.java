@@ -1,15 +1,15 @@
 
 public class Image {
 
-	public final int height;
-	public final int width;
-	public final boolean image[][];
+	public int rows;
+	public int columns;
+	public boolean image[][];
 	
 	private int integralImage[][];
 	
 	public Image(int width, int height, boolean image[][]) {
-		this.width = width;
-		this.height = height;
+		this.columns = width;
+		this.rows = height;
 		this.image = image;
 		
 		calculateIntegralImage();
@@ -19,68 +19,70 @@ public class Image {
 		if(integralImage != null) {
 			return;
 		}
-		integralImage = new int[width][height];
+		integralImage = new int[rows][columns];
 		
-		for(int y=0; y<height; y++) {
-			for(int x=0; x<width; x++) {
-				if(x>0) {
-					integralImage[x][y] += integralImage[x-1][y];
+		for(int row=0; row<rows; row++) {
+			for(int column=0; column<columns; column++) {
+				if(column>0) {
+					integralImage[row][column] += integralImage[row][column-1];
 				}
-				if(y>0) {
-					integralImage[x][y] += integralImage[x][y-1];
+				if(row>0) {
+					integralImage[row][column] += integralImage[row-1][column];
 				}
-				if(x>0 && y>0) {
-					integralImage[x][y] -= integralImage[x-1][y-1];
+				if(column>0 && row>0) {
+					integralImage[row][column] -= integralImage[row-1][column-1];
 				}
 				
-				integralImage[x][y] += image[x][y] ? 1 : 0;
+				integralImage[row][column] += image[row][column] ? 1 : 0;
 			}
 		}
 	}
 	
-	public int countSetPoints(int x, int y, int s) {
+	public int countSetPoints(int row, int column, int s) {
 		String warning = "Warning: countSetPoints request outside of image";
 		
-		int x2 = x + s;
-		if(x2 >= width) {
+		int column2 = column + s;
+		if(column2 >= columns) {
 			System.out.println(warning);
-			x2 = width-1;
+			column2 = columns-1;
 		}
-		int y2 = y + s;
-		if(y2 >= height) {
+		int row2 = row + s;
+		if(row2 >= rows) {
 			System.out.println(warning);
-			y2 = height-1;
-		}
-		
-		int x1 = x - s - 1;
-		int y1 = y - s - 1;
-		
-		if(x1 < 0 && y1 < 0) {
-			System.out.println(warning);
-			return integralImage[x2][y2];
+			row2 = rows-1;
 		}
 		
-		if(x1 < 0) {
-			System.out.println(warning);
-			x1 = 0;
-		}
-		if(y1 < 0) {
-			System.out.println(warning);
-			y1 = 0;
+		int column1 = column - s - 1;
+		int row1 = row - s - 1;
+		
+		if(column1 < 0 && row1 < 0) {
+			if(column1 < -1 || row1 < -1) {
+				System.out.println(warning);
+			}
+			return integralImage[row2][column2];
 		}
 		
-		return integralImage[x2][y2] - integralImage[x1][y2] - integralImage[x2][y1] + integralImage[x1][y1];
+		if(column1 < 0) {
+			System.out.println(warning);
+			column1 = 0;
+		}
+		if(row1 < 0) {
+			System.out.println(warning);
+			row1 = 0;
+		}
+		
+		return integralImage[row2][column2] - integralImage[row2][column1] - integralImage[row1][column2] + integralImage[row1][column1];
 	}
 	
 	public String toString() {
 		
 		StringBuilder builder = new StringBuilder();
-		builder.append(height + " " + width);
+		builder.append(rows + " " + columns);
 		builder.append("\n");
 		
-		for(int y=0; y<height; y++) {
-			for(int x=0; x<width; x++) {
-				if(image[x][y]) {
+		for(int row=0; row<rows; row++) {
+			for(int column=0; column<columns; column++) {
+				if(image[row][column]) {
 					builder.append('#');
 				}
 				else {
@@ -94,11 +96,11 @@ public class Image {
 	}
 	
 	public void debugIntegralImage() {
-		int fieldlength = (int)Math.ceil(Math.log10(integralImage[width-1][height-1])) + 1;
+		int fieldlength = (int)Math.ceil(Math.log10(integralImage[rows-1][columns-1])) + 1;
 		//System.out.println(fieldlength);
-		for(int y=0; y<height; y++) {
-			for(int x=0; x<width; x++) {
-				System.out.printf("%" + fieldlength + "d, ", integralImage[x][y]);
+		for(int row=0; row<rows; row++) {
+			for(int column=0; column<columns; column++) {
+				System.out.printf("%" + fieldlength + "d, ", integralImage[row][column]);
 			}
 			System.out.println();
 		}
