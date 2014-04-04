@@ -1,14 +1,25 @@
+import java.util.List;
+
+import action.Action;
+import action.Painter;
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Image im = ImageReader.read("example.txt");
+		// Input
+		String filename = "doodle.txt";
+		if(args.length > 0) {
+			filename = args[0];
+		}
+		Image im = ImageReader.read(filename);
 		
-		System.out.println(im.toString());
+		// Algorithme
+		Simple s = new Simple();
+		List<Action> action = s.calculate(im);
 		
-		im.debugIntegralImage();
-		
-		System.out.println(im.countSetPoints(2, 3, 2));
+		// Output
+		System.out.println(Painter.getOutput(action));
 	}
 }
