@@ -10,8 +10,8 @@ import action.PaintSQ;
 
 public class Solver {
 
-	ArrayList<EraseCell> erasers = new ArrayList<EraseCell>();
-	ArrayList<PaintSQ> painters = new ArrayList<PaintSQ>();
+	public ArrayList<EraseCell> erasers = new ArrayList<EraseCell>();
+	public ArrayList<PaintSQ> painters = new ArrayList<PaintSQ>();
 
 	
 	public int CheckBestPaint(int row, int col,Image myImage){
@@ -45,7 +45,7 @@ public class Solver {
 			{
 				int s = CheckBestPaint(r,c,img);
 				int prio = score(r,c,s,img);
-				Center cent;
+				Center cent=new Center();
 				cent.setR(r);
 				cent.setC(c);
 				cent.setS(s);

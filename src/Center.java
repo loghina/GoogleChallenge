@@ -1,5 +1,7 @@
 
-public class Center {
+
+
+public class Center implements  Comparable<Center>{
 	
 	int R,C;
 	int S;
@@ -36,5 +38,12 @@ public class Center {
 	}
 	public void setFlag(boolean flag) {
 		this.flag = flag;
-	} 
+	}
+	
+	@Override
+	public int compareTo(Center o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

@@ -15,10 +15,7 @@ public class Simple {
 			for(int column=0; column<im.columns; column++) {
 				
 				if(im.image[row][column]) {
-					PaintSQ p = new PaintSQ();
-					p.R = row;
-					p.C = column;
-					p.S = 1;
+					PaintSQ p = new PaintSQ(row,column,1);
 					result.add(p);
 				}
 				
