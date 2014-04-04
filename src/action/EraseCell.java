@@ -10,4 +10,8 @@ public class EraseCell implements Action {
 		
 		image[R][C] = false;
 	}
+	
+	public String toString() {
+		return "ERASECELL " + R + " " + C;
+	}
 }

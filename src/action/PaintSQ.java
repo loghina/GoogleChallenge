@@ -12,4 +12,8 @@ public class PaintSQ implements Action{
 		
 		int R1 = 0;
 	}
+	
+	public String toString() {
+		return "PAINTSQ " + R + " " + C + " " + S;
+	}
 }
