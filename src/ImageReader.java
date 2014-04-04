@@ -6,9 +6,11 @@ import java.io.IOException;
 
 
 public class ImageReader {
+	
+	
 
 	public static Image read(String filename) {
-		Image result = new Image();
+		Image result = null;
 		
 		BufferedReader reader = null;
 		try {
@@ -29,10 +31,7 @@ public class ImageReader {
 			String parts[] = size.split(" ");
 			int height = Integer.parseInt(parts[0]);
 			int width = Integer.parseInt(parts[1]);
-			
-			result.height = height;
-			result.width = width;
-			result.image = new boolean[width][height];
+			boolean[][] image = new boolean[width][height];
 			
 			for(int y=0; y<height; y++) {
 				String line = reader.readLine();
@@ -50,10 +49,10 @@ public class ImageReader {
 
 					char c = line.charAt(x);
 					if(c == '#') {
-						result.image[x][y] = true;
+						image[x][y] = true;
 					}
 					else if(c == '.') {
-						result.image[x][y] = false;
+						image[x][y] = false;
 					}
 					else {
 						System.out.println("character " + c + " at row y=" + y + ", at line " + (y+1) + ", column x=" + x + " invalid");
@@ -63,6 +62,7 @@ public class ImageReader {
 				}
 			}
 			
+			result = new Image(width, height, image);
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
