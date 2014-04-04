@@ -88,7 +88,7 @@ public class Solver {
 						
 					
 					}
-					
+					flags[k][k1]=true;
 				  					
 				}
 				if(flagged)
