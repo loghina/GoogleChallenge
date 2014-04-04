@@ -38,6 +38,9 @@ public class Image {
 		}
 	}
 	
+	
+	
+	
 	public int countSetPoints(int row, int column, int s) {
 		String warning = "Warning: countSetPoints request outside of image";
 		
