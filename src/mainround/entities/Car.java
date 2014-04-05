@@ -26,6 +26,15 @@ public class Car {
 		intersections.add(street.B);
 	}
 	
+	public boolean testStreet(Street street, double maxtime) {
+		if(time_passed + street.cost > maxtime) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
 	public Intersection getActualIntersection() {
 		// TODO: check if intersections is empty?
 		return intersections.get(intersections.size()-1);
