@@ -5,12 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import mainround.entities.Problem;
+
 
 public class Input {
 
 	// TODO: output type
-	public static Object read(String filename) {
-		Object result = null;
+	public static Problem read(String filename) {
+		Problem result = null;
 		
 		BufferedReader reader = null;
 		try {
@@ -28,7 +30,12 @@ public class Input {
 				return result;
 			}
 			
-			// TODO: parsing
+			String parts[] = size.split(" ");
+			int numberJunctions = Integer.parseInt(parts[0]);
+			int numberStreets = Integer.parseInt(parts[1]);
+			int timeAvailable = Integer.parseInt(parts[2]);
+			int numberCars = Integer.parseInt(parts[3]);
+			int startingPoint = Integer.parseInt(parts[4]);
 			
 			reader.close();
 		} catch (IOException e) {
