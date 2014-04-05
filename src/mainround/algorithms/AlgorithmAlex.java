@@ -22,7 +22,7 @@ public class AlgorithmAlex {
 		//-----------------
 		float time = input.timeAvailable;
 		
-		//Random rand = new Random();
+		Random rand = new Random();
 		
 		for(Car c : result) {
 			
@@ -31,9 +31,11 @@ public class AlgorithmAlex {
 			while(c.time_passed < time) {
 				Set<Street> edges = input.graph.outgoingEdgesOf(act);
 				Street chosenStreet=FindNextStreet(edges);
-				
-				/*int streetindex = rand.nextInt(edges.size());
-				Street chosenStreet = (Street)edges.toArray()[streetindex];*/
+				if (chosenStreet==null){
+					//if all streets already taken - random choice
+					int streetindex = rand.nextInt(edges.size());
+					chosenStreet = (Street)edges.toArray()[streetindex];
+				}
 				// TODO: optimize, only streets which low enough cost
 				if(c.time_passed + chosenStreet.cost > time) {
 					break;
@@ -47,17 +49,20 @@ public class AlgorithmAlex {
 	
 	public Street FindNextStreet(Set<Street> futureStreets){
 		Street nextStreet=null;
-		//choose the street with max length
+		//choose the future street with max length
 		for (Street s:futureStreets){
-			if (nextStreet==null)
-				nextStreet=s;
-			else{
-				if (s.length>nextStreet.length){
-					if (s.visited.visited==false)
+			if (s.visited.visited==false){
+				if (nextStreet==null)
+					nextStreet=s;
+				else{
+					if (s.length>nextStreet.length){
 						nextStreet=s;
+					}
 				}
 			}
 		}		
+		if (nextStreet==null)	System.err.println("blocked in street");
 		return nextStreet;
 	}
+	
 }
