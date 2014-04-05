@@ -8,6 +8,7 @@ import org.paukov.combinatorics.Generator;
 import org.paukov.combinatorics.ICombinatoricsVector;
 
 import mainround.algorithms.*;
+import mainround.algorithms.thomas.local.AlgorithmRandom;
 import mainround.entities.Car;
 import mainround.entities.Problem;
 
