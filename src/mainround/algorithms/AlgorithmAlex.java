@@ -61,7 +61,6 @@ public class AlgorithmAlex {
 				}
 			}
 		}		
-		if (nextStreet==null)	System.err.println("blocked in street");
 		return nextStreet;
 	}
 	
