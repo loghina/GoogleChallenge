@@ -1,4 +1,6 @@
 package mainround;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.paukov.combinatorics.Factory;
@@ -22,9 +24,14 @@ public class Main {
 		}
 		Problem input = Input.read(filename);
 		
+
 		// Algorithme1
-		Algorithm1 algo = new Algorithm1();
-		algo.calculate(input);
+		Algorithm1 algo1 = new Algorithm1();
+		algo1.calculate(input);
+
+		// Algorithme
+		Algorithm algo = new AlgorithmRandom();
+
 		//Algorithm algo = new Algorithm2();
 		List<Car> solution = algo.calculate(input);
 		
@@ -32,13 +39,24 @@ public class Main {
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
-		System.out.println(Output.getOutput(solution));
+		String output = Output.getOutput(solution);
+		System.out.println(output);
 		
+		String outputfilename = "output.txt";
+		PrintWriter printer;
+		try {
+			printer = new PrintWriter(outputfilename);
+			printer.print(output);
+			printer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		// Test
 		ICombinatoricsVector<String> initialVector = Factory.createVector(
 				new String[] { "red", "black", "white", "green", "blue" } );
 		Generator<String> gen = Factory.createSimpleCombinationGenerator(initialVector, 3);
 		System.out.println("nombre de combinaisons"+gen.getNumberOfGeneratedObjects());
 		
+		System.err.println(Output.getScore(solution));
 	}
 }
