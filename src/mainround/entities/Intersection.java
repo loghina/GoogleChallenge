@@ -5,6 +5,7 @@ public class Intersection {
 	public int index;
 	static private int progressive=0;
 	
+	public Intersection(){}
 	public Intersection(double lat, double lon){
 		latitude=lat;
 		longitude=lon;

@@ -10,6 +10,9 @@ public class Output {
 	public static String getOutput(List<Car> input) {
 		StringBuilder builder = new StringBuilder();
 		// TODO: output
+		for (Car i:input){
+			
+		}
 		
 		return builder.toString();
 	}
