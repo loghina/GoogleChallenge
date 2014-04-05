@@ -31,4 +31,8 @@ public class Street {
 			visited=true;
 		}
 	}
+	
+	public String toString() {
+		return "street " + index + " from " + A + " to " + B;
+	}
 }

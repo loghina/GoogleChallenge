@@ -12,7 +12,7 @@ import mainround.entities.Car;
 import mainround.entities.Problem;
 
 
-public class Main {
+public class MainSabbagh {
 
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -30,17 +30,22 @@ public class Main {
 		algo1.calculate(input);
 
 		// Algorithme
-		Algorithm algo = new AlgorithmRandom();
 
-		//Algorithm algo = new Algorithm2();
-		List<Car> solution = algo.calculate(input);
+//		Algorithm algo = new AlgorithmRandom();
+//
+//=======
+//		//Algorithm algo = new AlgorithmRandom();
+//>>>>>>> branch 'master' of https://github.com/loghina/GoogleChallenge.git
+//		//Algorithm algo = new Algorithm2();
+//		//List<Car> solution = algo.calculate(input);
 		
 		AlgorithmAlex algo_2 = new AlgorithmAlex();
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
 		String output = Output.getOutput(solution_alex);
-		//System.out.println(output);
+		System.out.println(output);
+		
 		String outputfilename = "output.txt";
 		PrintWriter printer;
 		try {
@@ -56,6 +61,6 @@ public class Main {
 		Generator<String> gen = Factory.createSimpleCombinationGenerator(initialVector, 3);
 		System.out.println("nombre de combinaisons"+gen.getNumberOfGeneratedObjects());
 		
-		System.err.println(Output.getScore(solution));
+		System.err.println(Output.getScore(solution_alex));
 	}
 }

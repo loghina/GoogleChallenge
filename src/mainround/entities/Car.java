@@ -17,6 +17,7 @@ public class Car {
 			System.err.println("car jumps in space "
 					+ "from " + getActualIntersection().index + " "
 					+ "using street from " + street.A.index + " to " + street.B.index);
+			throw new NullPointerException();
 		}
 		time_passed += street.cost;
 		if(!street.visited.visited) {
@@ -38,5 +39,9 @@ public class Car {
 	public Intersection getActualIntersection() {
 		// TODO: check if intersections is empty?
 		return intersections.get(intersections.size()-1);
+	}
+	
+	public String toString() {
+		return "car at " + getActualIntersection();
 	}
 }
