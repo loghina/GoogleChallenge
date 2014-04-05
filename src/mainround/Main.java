@@ -1,4 +1,6 @@
 package mainround;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import mainround.algorithms.*;
@@ -19,7 +21,7 @@ public class Main {
 		Problem input = Input.read(filename);
 		
 		// Algorithme
-		Algorithm algo = new Algorithm1();
+		Algorithm algo = new AlgorithmRandom();
 		//Algorithm algo = new Algorithm2();
 		List<Car> solution = algo.calculate(input);
 		
@@ -27,8 +29,18 @@ public class Main {
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
-		System.out.println(Output.getOutput(solution));
+		String output = Output.getOutput(solution);
+		System.out.println(output);
 		
+		String outputfilename = "output.txt";
+		PrintWriter printer;
+		try {
+			printer = new PrintWriter(outputfilename);
+			printer.print(output);
+			printer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		// Test
 		
 	}
