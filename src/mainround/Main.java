@@ -23,6 +23,9 @@ public class Main {
 		//Algorithm algo = new Algorithm2();
 		List<Car> solution = algo.calculate(input);
 		
+		AlgorithmAlex algo_2 = new AlgorithmAlex();
+		List<Car> solution_alex = algo_2.calculate(input);
+		
 		// Output
 		System.out.println(Output.getOutput(solution));
 		
