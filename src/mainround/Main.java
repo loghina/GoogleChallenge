@@ -21,9 +21,9 @@ public class Main {
 		Problem input = Input.read(filename);
 		
 		// Algorithme
-		Algorithm algo = new AlgorithmRandom();
+		//Algorithm algo = new AlgorithmRandom();
 		//Algorithm algo = new Algorithm2();
-		List<Car> solution = algo.calculate(input);
+		//List<Car> solution = algo.calculate(input);
 		
 		AlgorithmAlex algo_2 = new AlgorithmAlex();
 		List<Car> solution_alex = algo_2.calculate(input);
@@ -43,6 +43,6 @@ public class Main {
 		}
 		// Test
 		
-		System.err.println(Output.getScore(solution));
+		System.err.println(Output.getScore(solution_alex));
 	}
 }
