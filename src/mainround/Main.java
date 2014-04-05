@@ -10,7 +10,7 @@ import mainround.entities.Problem;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		// Input
 		//String filename = "example2.txt";
@@ -30,7 +30,7 @@ public class Main {
 		
 		// Output
 		String output = Output.getOutput(solution_alex);
-		System.out.println(output);
+		//System.out.println(output);
 		
 		String outputfilename = "output.txt";
 		PrintWriter printer;
