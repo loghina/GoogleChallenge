@@ -29,7 +29,7 @@ public class Main {
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
-		String output = Output.getOutput(solution);
+		String output = Output.getOutput(solution_alex);
 		System.out.println(output);
 		
 		String outputfilename = "output.txt";
