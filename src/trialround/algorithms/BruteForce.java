@@ -1,11 +1,12 @@
-package trial;
+package trialround.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import trial.action.Action;
-import trial.action.EraseCell;
-import trial.action.PaintSQ;
+import trialround.Image;
+import trialround.action.Action;
+import trialround.action.EraseCell;
+import trialround.action.PaintSQ;
 
 
 public class BruteForce {
@@ -69,6 +70,7 @@ public class BruteForce {
 		
 		int actsize = MAX;
 		while(!queue.isEmpty()) {
+			System.err.println("result " + result.size());
 			Square s = queue.poll();
 			
 			int impoints =  im.countSetPoints(s.R, s.C, s.S);

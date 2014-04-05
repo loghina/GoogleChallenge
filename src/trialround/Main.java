@@ -1,7 +1,8 @@
-package trial;
+package trialround;
 import java.util.List;
 
-import trial.action.Action;
+import trialround.action.Action;
+import trialround.algorithms.BruteForce3;
 
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
 		
 		// Algorithme
 		//Simple algo = new Simple();
-		BruteForce algo = new BruteForce();
+		BruteForce3 algo = new BruteForce3();
 		List<Action> actions = algo.calculate(im);
 		
 		// Output

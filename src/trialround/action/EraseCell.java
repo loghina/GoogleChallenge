@@ -1,4 +1,4 @@
-package trial.action;
+package trialround.action;
 
 public class EraseCell implements Action {
 	public int R = 0;
@@ -9,6 +9,17 @@ public class EraseCell implements Action {
 		// TODO Auto-generated method stub
 		
 		image[R][C] = false;
+		return image;
+	}
+	
+	/**
+	 * mark erased pixels with -1
+	 */
+	@Override
+	public int[][] apply(int[][] image) {
+		// TODO Auto-generated method stub
+		
+		image[R][C] -= 1;
 		return image;
 	}
 	

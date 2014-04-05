@@ -1,11 +1,12 @@
-package trial;
+package trialround.algorithms;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import trial.action.Action;
-import trial.action.PaintSQ;
+import trialround.Image;
+import trialround.action.Action;
+import trialround.action.PaintSQ;
 
 public class Simple {
 

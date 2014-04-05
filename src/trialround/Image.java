@@ -1,4 +1,4 @@
-package trial;
+package trialround;
 
 public class Image {
 
@@ -51,27 +51,28 @@ public class Image {
 	}
 	
 	public int countSetPointsBasic(int row, int column, int s) {
-		String warning = "Warning: countSetPoints request outside of image";
+		String warning = "Warning: countSetPointsBasic request outside of image r:" + row + " c:" + column + " s:" + s 
+				+ "; image size rows:" + rows + " columns:" + columns;
 		int column2 = column + s + 1;
 		if(column2 > columns) {
-			System.out.println(warning);
+			System.err.println(warning);
 			column2 = columns-1;
 		}
 		int row2 = row + s + 1;
 		if(row2 > rows) {
-			System.out.println(warning);
+			System.err.println(warning);
 			row2 = rows-1;
 		}
 		
 		int column1 = column - s;
 		int row1 = row - s;
 		if(column1 < 0 || row1 < 0) {
-				System.out.println(warning);
+				System.err.println(warning);
 		}
 		
 		int sum = 0;
 		for(int r=0; row<rows; row++) {
-			for(int c=0; column<columns; columns++) {
+			for(int c=0; column<columns; column++) {
 				sum += image[r][c] ? 1 : 0;
 			}
 		}
@@ -80,16 +81,16 @@ public class Image {
 	}
 	
 	public int countSetPoints(int row, int column, int s) {
-		String warning = "Warning: countSetPoints request outside of image";
+		String warning = "Warning: countSetPoints request outside of image r:" + row + " c:" + column + " s:" + s;
 		
 		int column2 = column + s;
 		if(column2 >= columns) {
-			System.out.println(warning);
+			System.err.println(warning);
 			column2 = columns-1;
 		}
 		int row2 = row + s;
 		if(row2 >= rows) {
-			System.out.println(warning);
+			System.err.println(warning);
 			row2 = rows-1;
 		}
 		
@@ -98,17 +99,17 @@ public class Image {
 		
 		if(column1 < 0 && row1 < 0) {
 			if(column1 < -1 || row1 < -1) {
-				System.out.println(warning);
+				System.err.println(warning);
 			}
 			return integralImage[row2][column2];
 		}
 		
 		if(column1 < 0) {
-			System.out.println(warning);
+			System.err.println(warning);
 			column1 = 0;
 		}
 		if(row1 < 0) {
-			System.out.println(warning);
+			System.err.println(warning);
 			row1 = 0;
 		}
 		

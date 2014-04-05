@@ -1,8 +1,8 @@
-package trial;
+package trialround;
 
 import java.util.List;
 
-import trial.action.Action;
+import trialround.action.Action;
 
 public class Painter {
 	

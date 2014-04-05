@@ -1,4 +1,6 @@
-package trial;
+package trialround.algorithms;
+
+import trialround.Image;
 
 public class Algo1 {
 	Image myImage;
