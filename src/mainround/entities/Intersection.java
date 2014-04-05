@@ -12,4 +12,8 @@ public class Intersection {
 	public Intersection() {
 		
 	}
+	
+	public String toString() {
+		return "intersection " + index;
+	}
 }
