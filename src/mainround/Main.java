@@ -43,5 +43,6 @@ public class Main {
 		}
 		// Test
 		
+		System.err.println(Output.getScore(solution));
 	}
 }

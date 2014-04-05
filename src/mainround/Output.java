@@ -22,4 +22,12 @@ public class Output {
 		return builder.toString();
 	}
 	
+	public static int getScore(List<Car> input) {
+		int result = 0;
+		for(Car c : input) {
+			result += c.length;
+		}
+		
+		return result;
+	}
 }

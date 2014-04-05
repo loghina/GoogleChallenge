@@ -19,7 +19,10 @@ public class Car {
 					+ "using street from " + street.A.index + " to " + street.B.index);
 		}
 		time_passed += street.cost;
-		length += street.length;
+		if(!street.visited.visited) {
+			length += street.length;
+			street.visited.visit();
+		}
 		intersections.add(street.B);
 	}
 	
