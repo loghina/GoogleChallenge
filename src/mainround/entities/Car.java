@@ -12,7 +12,31 @@ public class Car {
 		intersections.add(S);
 	}
 	
-	public void VisitIntersection(Intersection inters){
-		intersections.add(inters);
+	public void useStreet(Street street){
+		if(getActualIntersection().index != street.A.index) {
+			System.err.println("car jumps in space "
+					+ "from " + getActualIntersection().index + " "
+					+ "using street from " + street.A.index + " to " + street.B.index);
+		}
+		time_passed += street.cost;
+		if(!street.visited.visited) {
+			length += street.length;
+			street.visited.visit();
+		}
+		intersections.add(street.B);
+	}
+	
+	public boolean testStreet(Street street, double maxtime) {
+		if(time_passed + street.cost > maxtime) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public Intersection getActualIntersection() {
+		// TODO: check if intersections is empty?
+		return intersections.get(intersections.size()-1);
 	}
 }
