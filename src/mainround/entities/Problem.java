@@ -13,6 +13,7 @@ public class Problem {
 	public float timeAvailable;
 	public int numberOfCars;
 	public int startingIntersection;
+	public int numberOfStreets;
 	
 	public void setVisitedStreets(int n_streets){
 		visitedStreets=new HashSet<Street>(n_streets);
