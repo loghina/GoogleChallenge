@@ -55,7 +55,7 @@ public class Input {
 			result.timeAvailable = timeAvailable;
 			result.numberOfCars = numberCars;
 			result.startingIntersection = startingIntersection;
-			
+			result.numberOfStreets=numberStreets;
 			// Junctions
 			for(int i=0; i<numberJunctions; i++) {
 				reader.readLine(); // Ignore coordinates
