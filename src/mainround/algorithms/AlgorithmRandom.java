@@ -22,22 +22,21 @@ public class AlgorithmRandom implements Algorithm {
 		for(Car c : result) {
 			
 			Intersection act = c.getActualIntersection();
-			double usedTime = 0;
-			while(usedTime < time) {
 
-				Set<Street> edges = problem.graph.edgesOf(act);
+			while(c.time_passed < time) {
+				Set<Street> edges = problem.graph.outgoingEdgesOf(act);
 				int streetindex = rand.nextInt(edges.size());
 				Street chosenStreet = (Street)edges.toArray()[streetindex];
 				// TODO: optimize, only streets which low enough cost
-				if(usedTime + chosenStreet.cost > time) {
+				if(c.time_passed + chosenStreet.cost > time) {
 					break;
 				}
 				act = chosenStreet.B;
+				c.useStreet(chosenStreet);
 			}
-			
 		}
 		
-		return null;
+		return result;
 	}
 
 }

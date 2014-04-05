@@ -13,9 +13,12 @@ public class Car {
 	}
 	
 	public void useStreet(Street street){
-		if(getActualIntersection() != street.A) {
-			System.err.println("car jumps in space");
+		if(getActualIntersection().index != street.A.index) {
+			System.err.println("car jumps in space "
+					+ "from " + getActualIntersection().index + " "
+					+ "using street from " + street.A.index + " to " + street.B.index);
 		}
+		time_passed += street.cost;
 		length += street.length;
 		intersections.add(street.B);
 	}
