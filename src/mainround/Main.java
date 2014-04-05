@@ -15,7 +15,7 @@ import mainround.entities.Problem;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		// Input
 		//String filename = "example2.txt";
@@ -40,9 +40,8 @@ public class Main {
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
-		String output = Output.getOutput(solution);
-		System.out.println(output);
-		
+		String output = Output.getOutput(solution_alex);
+		//System.out.println(output);
 		String outputfilename = "output.txt";
 		PrintWriter printer;
 		try {
