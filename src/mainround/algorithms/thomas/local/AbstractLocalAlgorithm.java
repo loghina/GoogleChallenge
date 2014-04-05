@@ -1,23 +1,23 @@
-package mainround.algorithms;
+package mainround.algorithms.thomas.local;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import mainround.algorithms.Algorithm;
+import mainround.algorithms.thomas.AbstractAlgorithm;
 import mainround.entities.Car;
 import mainround.entities.Intersection;
 import mainround.entities.Problem;
 import mainround.entities.Street;
 
-public class AlgorithmRandom implements Algorithm {
-
+public abstract class AbstractLocalAlgorithm extends AbstractAlgorithm {
 	@Override
 	public List<Car> calculate(Problem problem) {
 		List<Car> result = Problem.initCarList(problem);
 		float time = problem.timeAvailable;
 		
-		Random rand = new Random();
 		
 		for(Car c : result) {
 			
@@ -25,8 +25,10 @@ public class AlgorithmRandom implements Algorithm {
 
 			while(c.time_passed < time) {
 				Set<Street> edges = problem.graph.outgoingEdgesOf(act);
-				int streetindex = rand.nextInt(edges.size());
-				Street chosenStreet = (Street)edges.toArray()[streetindex];
+				
+				Street chosenStreet = step(c, edges);
+				
+				if(chosenStreet == null) break;
 				// TODO: optimize, only streets which low enough cost
 				if(c.time_passed + chosenStreet.cost > time) {
 					break;
@@ -38,5 +40,6 @@ public class AlgorithmRandom implements Algorithm {
 		
 		return result;
 	}
-
+	
+	public abstract Street step(Car c, Set<Street> streets);
 }

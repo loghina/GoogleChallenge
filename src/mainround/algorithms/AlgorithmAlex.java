@@ -110,16 +110,24 @@ public class AlgorithmAlex {
 	public int RecursiveFindLengthNextIntersection(Problem input,Intersection actualInters, Car c){
 		Set<Street> futureStreets = input.graph.outgoingEdgesOf(actualInters);
 		int cur_length,best=0;
+		Street bestStreet=null;
+		boolean foundSuccessor=false;
 		
 		//choose the street with max length
 		for (Street s:futureStreets){
-			if (s.visited.visited==false){	
+			if (s.visited.visited==false){
+				foundSuccessor=true;
 				cur_length=RecursiveFindLengthNextIntersection(input,s.B,c)+s.length;
-				if (cur_length>best)
+				if (cur_length>best){
 					best=cur_length;
+					bestStreet=s;
+				}
 			}
-			
 		}
+		if (!foundSuccessor)
+			best=0;
+		else
+			c.useStreet(bestStreet);
 		return best;
 	}
 }
