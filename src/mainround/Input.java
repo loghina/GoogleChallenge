@@ -50,9 +50,11 @@ public class Input {
 			int numberStreets = Integer.parseInt(parts[1]);
 			int timeAvailable = Integer.parseInt(parts[2]);
 			int numberCars = Integer.parseInt(parts[3]);
-			int startingPoint = Integer.parseInt(parts[4]);
+			int startingIntersection = Integer.parseInt(parts[4]);
 			
 			result.timeAvailable = timeAvailable;
+			result.numberOfCars = numberCars;
+			result.startingIntersection = startingIntersection;
 			
 			// Junctions
 			for(int i=0; i<numberJunctions; i++) {
