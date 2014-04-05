@@ -3,6 +3,7 @@ package mainround.algorithms;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.jgrapht.graph.DefaultDirectedWeightedGraph;
@@ -16,26 +17,52 @@ public class AlgorithmAlex {
 	public AlgorithmAlex(){}
 	
 	public List<Car> calculate(Problem input){
-		DefaultDirectedWeightedGraph<Intersection, Street>  myGraph=input.graph; 
-		HashSet<Street> visStreets=input.visitedStreets;
-			
-		ArrayList<Car> result=(ArrayList<Car>)Problem.initCarList(input);
-		for (int i=0;i<input.numberOfCars;i++){
-			result.add(i, FindAPath(input));
-		}
+		ArrayList<Car> result=(ArrayList<Car>)Problem.initCarList(input);		
 		
+		//-----------------
+		float time = input.timeAvailable;
+		
+		Random rand = new Random();
+		
+		for(Car c : result) {
+			
+			Intersection act = c.getActualIntersection();
+
+			while(c.time_passed < time) {
+				Set<Street> edges = input.graph.outgoingEdgesOf(act);
+				Street chosenStreet=FindNextStreet(edges);
+				if (chosenStreet==null){
+					//if all streets already taken - random choice
+					int streetindex = rand.nextInt(edges.size());
+					chosenStreet = (Street)edges.toArray()[streetindex];
+				}
+				// TODO: optimize, only streets which low enough cost
+				if(c.time_passed + chosenStreet.cost > time) {
+					break;
+				}
+				act = chosenStreet.B;
+				c.useStreet(chosenStreet);
+			}
+		}
 		return result;
 	}
 	
-	public Car FindAPath(Problem input){
-		
-		Intersection start=Intersection.map.get(input.startingIntersection);
-		Set<Street> nextStreets=input.graph.outgoingEdgesOf(start);
-		for (Street st:nextStreets){
-			
-		}
-		
-		
-		return null;
+	public Street FindNextStreet(Set<Street> futureStreets){
+		Street nextStreet=null;
+		//choose the future street with max length
+		for (Street s:futureStreets){
+			if (s.visited.visited==false){
+				if (nextStreet==null)
+					nextStreet=s;
+				else{
+					if (s.length>nextStreet.length){
+						nextStreet=s;
+					}
+				}
+			}
+		}		
+		if (nextStreet==null)	System.err.println("blocked in street");
+		return nextStreet;
 	}
+	
 }
