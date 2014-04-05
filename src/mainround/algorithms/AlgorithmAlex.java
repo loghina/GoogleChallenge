@@ -55,24 +55,25 @@ public class AlgorithmAlex {
 					Intersection prec_inters=null;
 					for (Street st:edges){
 						Set<Street> next_edges = input.graph.outgoingEdgesOf(st.B);
+						
 						for(Street nextLevel:next_edges){
 							if (!nextLevel.visited.visited && (c.time_passed + st.cost+nextLevel.cost <= time)){
-								//chosenStreet=st;
-								//flagbreak=true;
-								//break;
-								next_nonvisited_edges.add(nextLevel);
-								prec_inters=st.A;
+								chosenStreet=st;
+								flagbreak=true;
+								break;
+								//next_nonvisited_edges.add(nextLevel);
+								//prec_inters=st.A;
 							}
 						}
-						//if (flagbreak)	break;
+						if (flagbreak)	break;
 					}
-					Street possibleStreet=FindNextStreet(next_nonvisited_edges);
+					/*Street possibleStreet=FindNextStreet(next_nonvisited_edges);
 					if (possibleStreet!=null)
 						chosenStreet=input.graph.getEdge(prec_inters, possibleStreet.A);
 					if (chosenStreet!=null && possibleStreet!=null){
 						c.useStreet(chosenStreet);
-						c.useStreet(possibleStreet);
-					}else{
+						c.useStreet(possibleStreet);*/
+					if (chosenStreet==null){
 						int streetindex = rand.nextInt(edges.size());
 						chosenStreet = (Street)edges.toArray()[streetindex];
 					}
@@ -105,19 +106,28 @@ public class AlgorithmAlex {
 		}		
 		return nextStreet;
 	}
-	/*
+	
 	public int RecursiveFindLengthNextIntersection(Problem input,Intersection actualInters, Car c){
 		Set<Street> futureStreets = input.graph.outgoingEdgesOf(actualInters);
 		int cur_length,best=0;
+		Street bestStreet=null;
+		boolean foundSuccessor=false;
 		
 		//choose the street with max length
 		for (Street s:futureStreets){
-			if (s.visited.visited==false){	
+			if (s.visited.visited==false){
+				foundSuccessor=true;
 				cur_length=RecursiveFindLengthNextIntersection(input,s.B,c)+s.length;
-				if (cur_length>best)
+				if (cur_length>best){
 					best=cur_length;
+					bestStreet=s;
+				}
 			}
 		}
+		if (!foundSuccessor)
+			best=0;
+		else
+			c.useStreet(bestStreet);
 		return best;
-	}*/
+	}
 }
