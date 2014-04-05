@@ -16,7 +16,7 @@ public class Output {
 		for (Car i:input){
 			builder.append(i.intersections.size()+"\n");
 			for (Intersection j : i.intersections){
-				builder.append(j.getIndex()+"\n");
+				builder.append(j.index+"\n");
 			}
 		}
 		return builder.toString();
