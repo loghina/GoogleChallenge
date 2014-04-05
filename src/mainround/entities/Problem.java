@@ -1,8 +1,11 @@
+
 package mainround.entities;
 
 import java.util.HashSet;
+import org.jgrapht.graph.DefaultDirectedWeightedGraph;
 
 public class Problem {
+	public DefaultDirectedWeightedGraph<Intersection, Street>  graph; 
 	public HashSet<Street> visitedStreets;
 	public float timeAvailable;
 	
