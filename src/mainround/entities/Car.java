@@ -11,7 +11,16 @@ public class Car {
 		intersections.add(S);
 	}
 	
-	public void VisitIntersection(Intersection inters){
-		intersections.add(inters);
+	public void useStreet(Street street){
+		if(getActualIntersection() != street.A) {
+			System.err.println("car jumps in space");
+		}
+		length += street.length;
+		intersections.add(street.B);
+	}
+	
+	public Intersection getActualIntersection() {
+		// TODO: check if intersections is empty?
+		return intersections.get(intersections.size()-1);
 	}
 }
