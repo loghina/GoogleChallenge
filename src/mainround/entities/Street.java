@@ -13,6 +13,7 @@ public class Street {
 	public int direction;
 	public int cost;
 	public int length;
+	public Flag visited = new Flag();
 	
 	public Street(){}
 	

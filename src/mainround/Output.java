@@ -8,6 +8,7 @@ public class Output {
 	
 	// TODO: params
 	public static String getOutput(List<Car> input) {
+		if(input == null) return "";
 		StringBuilder builder = new StringBuilder();
 		// TODO: output
 		for (Car i:input){

@@ -12,7 +12,7 @@ public class Main {
 		
 		// Input
 		//String filename = "example2.txt";
-		String filename = "example.txt";
+		String filename = "paris_54000.txt";
 		if(args.length > 0) {
 			filename = args[0];
 		}

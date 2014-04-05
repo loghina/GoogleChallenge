@@ -83,6 +83,7 @@ public class Input {
 					Street soposite = result.graph.addEdge(Intersection.map.get(b), Intersection.map.get(a));
 					soposite.cost = cost;
 					soposite.length = length;
+					soposite.visited = s.visited;
 				}
 			}
 			
