@@ -39,4 +39,8 @@ public class Car {
 		// TODO: check if intersections is empty?
 		return intersections.get(intersections.size()-1);
 	}
+	
+	public String toString() {
+		return "car at " + getActualIntersection();
+	}
 }
