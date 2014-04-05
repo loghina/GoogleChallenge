@@ -17,6 +17,7 @@ public class Car {
 			System.err.println("car jumps in space "
 					+ "from " + getActualIntersection().index + " "
 					+ "using street from " + street.A.index + " to " + street.B.index);
+			throw new NullPointerException();
 		}
 		time_passed += street.cost;
 		if(!street.visited.visited) {
