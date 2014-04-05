@@ -1,4 +1,5 @@
-package mainround;
+package mainround.entities;
+
 
 public class Street {
 	public Intersection A, B;
