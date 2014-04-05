@@ -26,20 +26,20 @@ public class Main {
 		
 
 		// Algorithme1
-		Algorithm1 algo1 = new Algorithm1();
-		algo1.calculate(input);
-
-		// Algorithme
-		Algorithm algo = new AlgorithmRandom();
-
-		//Algorithm algo = new Algorithm2();
-		List<Car> solution = algo.calculate(input);
-		
+//		Algorithm1 algo1 = new Algorithm1();
+//		algo1.calculate(input);
+//
+//		// Algorithme
+//		Algorithm algo = new AlgorithmRandom();
+//
+//		//Algorithm algo = new Algorithm2();
+//		List<Car> solution = algo.calculate(input);
+//		
 		AlgorithmAlex algo_2 = new AlgorithmAlex();
 		List<Car> solution_alex = algo_2.calculate(input);
 		
 		// Output
-		String output = Output.getOutput(solution);
+		String output = Output.getOutput(solution_alex);
 		System.out.println(output);
 		
 		String outputfilename = "output.txt";
@@ -57,6 +57,6 @@ public class Main {
 		Generator<String> gen = Factory.createSimpleCombinationGenerator(initialVector, 3);
 		System.out.println("nombre de combinaisons"+gen.getNumberOfGeneratedObjects());
 		
-		System.err.println(Output.getScore(solution));
+		System.err.println(Output.getScore(solution_alex));
 	}
 }
