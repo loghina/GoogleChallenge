@@ -1,3 +1,4 @@
+package trial;
 
 public class Center {
 	

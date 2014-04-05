@@ -1,10 +1,11 @@
+package trial;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import action.Action;
-import action.PaintSQ;
+import trial.action.Action;
+import trial.action.PaintSQ;
 
 public class Simple {
 
@@ -18,7 +19,7 @@ public class Simple {
 					PaintSQ p = new PaintSQ();
 					p.R = row;
 					p.C = column;
-					p.S = 1;
+					p.S = 0;
 					result.add(p);
 				}
 				

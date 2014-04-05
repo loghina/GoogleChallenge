@@ -1,12 +1,14 @@
-package action;
+package trial;
 
 import java.util.List;
 
+import trial.action.Action;
+
 public class Painter {
 	
-	public static void paint(List<Action> actions, boolean[][] image) {
+	public static void paint(List<Action> actions, Image im) {
 		for(Action action : actions) {
-			action.apply(image);
+			action.apply(im.image);
 		}
 	}
 	

@@ -1,3 +1,4 @@
+package trial;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -62,7 +63,7 @@ public class ImageReader {
 				}
 			}
 			
-			result = new Image(columns, rows, image);
+			result = new Image(rows, columns, image);
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();

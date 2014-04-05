@@ -1,3 +1,4 @@
+package trial;
 
 public class Image {
 
@@ -7,18 +8,29 @@ public class Image {
 	
 	private int integralImage[][];
 	
-	public Image(int width, int height, boolean image[][]) {
-		this.columns = width;
-		this.rows = height;
-		this.image = image;
+	public Image(int rows, int columns) {
+		this.columns = columns;
+		this.rows = rows;
+		
+		this.image = new boolean[rows][columns];
+		calculateIntegralImage();
+	}
+	
+	public Image(int rows, int columns, boolean image[][]) {
+		this.columns = columns;
+		this.rows = rows;
+		
+		this.image = new boolean[rows][columns];
+		for(int row=0; row<rows; row++) {
+			for(int column=0; column<columns; column++) {
+				this.image[row][column] = image[row][column];
+			}
+		}
 		
 		calculateIntegralImage();
 	}
 	
-	private void calculateIntegralImage() {
-		if(integralImage != null) {
-			return;
-		}
+	public void calculateIntegralImage() {
 		integralImage = new int[rows][columns];
 		
 		for(int row=0; row<rows; row++) {
@@ -36,6 +48,35 @@ public class Image {
 				integralImage[row][column] += image[row][column] ? 1 : 0;
 			}
 		}
+	}
+	
+	public int countSetPointsBasic(int row, int column, int s) {
+		String warning = "Warning: countSetPoints request outside of image";
+		int column2 = column + s + 1;
+		if(column2 > columns) {
+			System.out.println(warning);
+			column2 = columns-1;
+		}
+		int row2 = row + s + 1;
+		if(row2 > rows) {
+			System.out.println(warning);
+			row2 = rows-1;
+		}
+		
+		int column1 = column - s;
+		int row1 = row - s;
+		if(column1 < 0 || row1 < 0) {
+				System.out.println(warning);
+		}
+		
+		int sum = 0;
+		for(int r=0; row<rows; row++) {
+			for(int c=0; column<columns; columns++) {
+				sum += image[r][c] ? 1 : 0;
+			}
+		}
+		
+		return sum;
 	}
 	
 	public int countSetPoints(int row, int column, int s) {

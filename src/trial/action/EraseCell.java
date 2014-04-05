@@ -1,14 +1,15 @@
-package action;
+package trial.action;
 
 public class EraseCell implements Action {
 	public int R = 0;
 	public int C = 0;
 	
 	@Override
-	public void apply(boolean[][] image) {
+	public boolean[][] apply(boolean[][] image) {
 		// TODO Auto-generated method stub
 		
 		image[R][C] = false;
+		return image;
 	}
 	
 	public String toString() {
