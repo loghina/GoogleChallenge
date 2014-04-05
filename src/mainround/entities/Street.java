@@ -27,6 +27,8 @@ public class Street {
 	
 	public class Flag{
 		public boolean visited=false;
+		public int count = 0;
+		public Car firstVisitedBy;
 		public void visit(){
 			visited=true;
 		}

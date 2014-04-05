@@ -23,8 +23,29 @@ public class Car {
 		if(!street.visited.visited) {
 			length += street.length;
 			street.visited.visit();
+			street.visited.firstVisitedBy = this;
 		}
+		street.visited.count++;
 		intersections.add(street.B);
+	}
+	
+	public void undoUseStreet(Street street) {
+		if(getActualIntersection().index != street.B.index) {
+			System.err.println("car jumps in space "
+					+ "from " + getActualIntersection().index + " "
+					+ "using street from " + street.A.index + " to " + street.B.index);
+			throw new NullPointerException();
+		}
+		time_passed -= street.cost;
+		street.visited.count--;
+		if(street.visited.count == 0) {
+			street.visited.firstVisitedBy.length -= street.length;
+		}
+		else if(street.visited.count < 0) {
+			System.err.println("this shouldn't happen");
+			throw new NullPointerException();
+		}
+		intersections.remove(intersections.size()-1);
 	}
 	
 	public boolean testStreet(Street street, double maxtime) {
