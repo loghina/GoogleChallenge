@@ -75,9 +75,15 @@ public class Input {
 				int cost = Integer.parseInt(parts[3]);
 				int length = Integer.parseInt(parts[4]);
 				
-				Street s = new Street();
+				Street s = result.graph.addEdge(Intersection.map.get(a), Intersection.map.get(b));
 				s.cost = cost;
 				s.length = length;
+				
+				if(direction == 2) {
+					Street soposite = result.graph.addEdge(Intersection.map.get(b), Intersection.map.get(a));
+					soposite.cost = cost;
+					soposite.length = length;
+				}
 			}
 			
 			
