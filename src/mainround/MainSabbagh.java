@@ -14,7 +14,7 @@ import mainround.entities.Problem;
 
 public class MainSabbagh {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		// Input
 		//String filename = "example2.txt";

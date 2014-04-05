@@ -5,9 +5,6 @@ import java.util.List;
 import org.jgraph.graph.Edge;
 import org.jgrapht.alg.KShortestPaths;
 import org.jgrapht.traverse.BreadthFirstIterator;
-
-import com.sun.j3d.utils.behaviors.picking.Intersect;
-
 import mainround.entities.Car;
 import mainround.entities.Problem;
 import mainround.entities.Intersection;

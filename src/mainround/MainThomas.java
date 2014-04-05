@@ -5,7 +5,9 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import mainround.algorithms.Algorithm;
-import mainround.algorithms.AlgorithmRandom;
+import mainround.algorithms.thomas.*;
+import mainround.algorithms.thomas.global.LongLatAlgorithm;
+import mainround.algorithms.thomas.local.AlgorithmRandom2;
 import mainround.entities.Car;
 import mainround.entities.Problem;
 
@@ -22,7 +24,8 @@ public class MainThomas {
 		Problem input = Input.read(filename);
 		
 		// Algorithme
-		Algorithm algo = new AlgorithmRandom();
+		Algorithm algo = new LongLatAlgorithm();
+		//algo = new AlgorithmRandom2();
 		List<Car> solution = algo.calculate(input);
 
 		// Output
@@ -39,7 +42,14 @@ public class MainThomas {
 			e.printStackTrace();
 		}
 		// Test
-		
+		System.out.flush();
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.err.println("Thomas");
 		System.err.println(Output.getScore(solution));
 	}
 }

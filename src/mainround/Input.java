@@ -58,9 +58,13 @@ public class Input {
 			result.numberOfStreets=numberStreets;
 			// Junctions
 			for(int i=0; i<numberJunctions; i++) {
-				reader.readLine(); // Ignore coordinates
+				String coord = reader.readLine();
+				parts = coord.split(" ");
+				
 				Intersection intersection = new Intersection();
 				intersection.index = i;
+				intersection.latitude = Double.parseDouble(parts[0]);
+				intersection.longitude = Double.parseDouble(parts[1]);
 				Intersection.map.put(i, intersection);
 				// TODO: lat/long if necessary
 				result.graph.addVertex(intersection);
