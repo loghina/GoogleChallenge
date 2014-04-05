@@ -34,27 +34,35 @@ public class AlgoCH implements Algorithm{
 		{
 		tmp = stk.pop();	
 		Street str[] = problem.graph.outgoingEdgesOf(tmp).toArray(new Street[0]);
-
+		for(Street street : str)
+		{
+			stk.push(street.B);
+		}
+		
+		
+		
 		for(int i =0;i<problem.numberOfCars;i++)
 		{
 			boolean tookstreet = false;
-			if(cars[i].getActualIntersection().index==tmp.index)
+			for(Street street : str)
 			{
-				for(Street street : str)
+				if(cars[i].getActualIntersection().index==tmp.index)
 				{
-					stk.push(street.B);
 					if(!street.visited.visited)
 						{
 							if(cars[i].testStreet(street,problem.timeAvailable))
 								{
 									cars[i].useStreet(street);
+									
 									tookstreet = true;
+									street.visited.visited=true;
+									break;
 								}
-							street.visited.visited=true;
+//							street.visited.visited=true;
 						}
-					
 				}
-				if(!tookstreet)
+			}
+				if(!tookstreet && cars[i].getActualIntersection().index==tmp.index)
 				{
 					for(Street street : str)
 					{
@@ -66,7 +74,7 @@ public class AlgoCH implements Algorithm{
 				
 					}
 				}
-			}
+			
 		}
 		
 		
